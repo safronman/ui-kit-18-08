@@ -23,6 +23,8 @@ Follow the existing style: two-space indentation, single quotes, no semicolons, 
 
 Oxlint enforces React Hooks rules and warns when modules mix components with non-component exports. Address lint errors and avoid suppressions unless there is a documented reason.
 
+When importing a CSS Module in a component or page, always use `s` as the local import name: `import s from './Component.module.css'`. Reference its selectors through `s`, for example `className={s.container}`. Do not use `styles` or other aliases for CSS Modules.
+
 ## Testing Guidelines
 
 There is no test suite or coverage target yet. For UI changes, manually verify the relevant flow with `pnpm dev`, including narrow viewport behavior when styles change. If introducing tests, place them beside the unit under test using `*.test.ts` or `*.test.tsx`, add the runner command to `package.json`, and document it here.

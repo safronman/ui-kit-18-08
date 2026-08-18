@@ -1,6 +1,6 @@
 import { Button as BaseButton } from '@base-ui/react/button'
 import type { ComponentPropsWithoutRef } from 'react'
-import styles from './Button.module.css'
+import s from './Button.module.css'
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'text'
 
@@ -19,9 +19,9 @@ export function Button({
   ...props
 }: ButtonProps) {
   const buttonClassName = [
-    styles.button,
-    styles[variant],
-    fullWidth ? styles.fullWidth : undefined,
+    s.button,
+    s[variant],
+    fullWidth ? s.fullWidth : undefined,
     className,
   ]
     .filter(Boolean)
