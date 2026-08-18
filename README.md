@@ -1,34 +1,47 @@
-# React + TypeScript + Vite
+# @safronman/ui-kit
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Reusable React UI components.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- React DOM 19
 
-## React Compiler
+## Installation
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+```bash
+pnpm add @safronman/ui-kit
+```
 
-Note: This will impact Vite dev & build performances.
+## Usage
 
-## Expanding the Oxlint configuration
+Import the package stylesheet once in the application entry point, then import components from the package.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+```tsx
+import '@safronman/ui-kit/styles.css'
+import { Button } from '@safronman/ui-kit'
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+export function SaveButton() {
+  return <Button variant="primary">Save</Button>
 }
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`Button` supports `primary`, `secondary`, `outline`, and `text` variants. It also accepts the underlying Base UI button props, plus `fullWidth`.
+
+## Development
+
+```bash
+pnpm lint
+pnpm build
+pnpm exec vitest --project storybook run
+```
+
+The library build is written to `dist/`. Inspect its publishable contents with:
+
+```bash
+npm pack --dry-run
+```
+
+## License
+
+[MIT](./LICENSE)

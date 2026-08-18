@@ -1,20 +1,61 @@
 {
-  "name": "ui-kit-18-08",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@safronman/ui-kit",
+  "version": "0.1.0",
+  "description": "Reusable React UI components.",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/lib/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.js.map",
+    "dist/styles.css",
+    "dist/types",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safronman/ui-kit-18-08.git"
+  },
+  "bugs": {
+    "url": "https://github.com/safronman/ui-kit-18-08/issues"
+  },
+  "homepage": "https://github.com/safronman/ui-kit-18-08#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && pnpm run build:lib && pnpm run build:types",
+    "build:lib": "vite build --config vite.lib.config.ts",
+    "build:types": "tsc -p tsconfig.lib.json",
     "lint": "oxlint",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:storybook": "vitest --project storybook run",
+    "prepublishOnly": "pnpm run lint && pnpm run build && pnpm run test:storybook"
   },
   "dependencies": {
-    "@base-ui/react": "^1.7.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "@base-ui/react": "^1.7.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
