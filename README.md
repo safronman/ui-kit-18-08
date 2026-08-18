@@ -1,4 +1,4 @@
-# @safronman/ui-kit
+# @safronmandev1/ui-kit
 
 Reusable React UI components.
 
@@ -10,7 +10,7 @@ Reusable React UI components.
 ## Installation
 
 ```bash
-pnpm add @safronman/ui-kit
+pnpm add @safronmandev1/ui-kit
 ```
 
 ## Usage
@@ -18,8 +18,8 @@ pnpm add @safronman/ui-kit
 Import the package stylesheet once in the application entry point, then import components from the package.
 
 ```tsx
-import '@safronman/ui-kit/styles.css'
-import { Button } from '@safronman/ui-kit'
+import '@safronmandev1/ui-kit/styles.css'
+import { Button } from '@safronmandev1/ui-kit'
 
 export function SaveButton() {
   return <Button variant="primary">Save</Button>
