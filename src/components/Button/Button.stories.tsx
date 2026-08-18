@@ -4,6 +4,7 @@ import { Button, type ButtonProps } from './Button'
 
 const meta = preview.type<{ args: ButtonProps }>().meta({
   component: Button,
+  tags: ['autodocs'],
 })
 
 export const Primary = meta.story({
