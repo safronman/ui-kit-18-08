@@ -50,6 +50,18 @@ When working on UI components, always use the `your-project-sb-mcp` MCP tools to
 
 A story name may not match a property name. Always verify properties through component documentation or example stories.
 
+## Storybook CSF Next
+
+Use the latest supported CSF Next (CSF Factories) format for every new or updated Storybook configuration and story:
+
+- Define the preview with `definePreview` from `@storybook/react-vite` and define main configuration with `defineMain` from `@storybook/react-vite/node`.
+- Import the preview into each story, create component metadata with `preview.meta(...)`, and create stories with `meta.story(...)`.
+- If CSF Next cannot infer props for a wrapped or polymorphic component and story `args` become `never`, use the component's exported props contract: `preview.type<{ args: ComponentProps }>().meta(...)`.
+- Do not use legacy `Meta`, `StoryObj`, default meta exports, or CSF3 `loaders` in new or migrated stories.
+- For MSW, use `addonMsw()` from `msw-storybook-addon` in `definePreview` with endpoint-specific handlers in `beforeEach`; do not use the deprecated `mswLoader` from `msw-storybook-addon/csf3`.
+- Declare every custom story tag in `defineMain({ tags: ... })` for Storybook filtering and include it in `definePreview({ tags: ... })` before applying it in `preview.meta(...)` or `meta.story(...)`; CSF Next infers tag types from the preview factory.
+- After a CSF Next migration, run `pnpm exec vitest --project storybook run`, `pnpm build`, and the available `your-project-sb-mcp` `run-story-tests` tool.
+
 ## Commit & Pull Request Guidelines
 
 The repository has no established commit history, so use concise Conventional Commits, such as `feat(ui): add alert component` or `fix(styles): correct mobile spacing`. Keep commits focused.
