@@ -1,6 +1,6 @@
 {
   "name": "@safronmandev1/ui-kit",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Reusable React UI components.",
   "type": "module",
   "packageManager": "pnpm@11.21.0",
