@@ -42,6 +42,12 @@ The library build is written to `dist/`. Inspect its publishable contents with:
 npm pack --dry-run
 ```
 
+## Publishing
+
+The first release must be published manually after signing in to npm. Then configure npm Trusted Publisher for `safronman/ui-kit-18-08`, selecting `.github/workflows/publish.yml` and the `npm` environment. Subsequent versions are published by creating a GitHub Release after the version has been updated in `package.json`.
+
+The workflow uses GitHub Actions OIDC and does not require an `NPM_TOKEN` secret. Protect the `npm` GitHub environment so only approved maintainers can publish releases.
+
 ## License
 
 [MIT](./LICENSE)
